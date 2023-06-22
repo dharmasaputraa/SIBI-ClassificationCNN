@@ -49,9 +49,20 @@ image_viewer_column = [
 ]
 # Kolom Area No 3: Area Image info dan Tombol list of processing
 list_processing = [
-    [sg.Text(size=(11, 11), key="Prediction")],
     [
-        sg.Button("Classification", size=(11, 1), key="Classification"),
+        sg.Text(
+            "Prediction:",
+        )
+    ],
+    [
+        sg.Text(
+            size=(0, 0),
+            key="Prediction",
+            font=("OpenSans", 100),
+        )
+    ],
+    [
+        sg.Button("Classification", size=(20, 1), key="Classification"),
     ],
 ]
 
@@ -73,7 +84,7 @@ layout = [
     ]
 ]
 
-window = sg.Window("Classification Model CNN by Dharma Saputra", layout)
+window = sg.Window("SIBI Classification Model CNN by Dharma Saputra", layout)
 # Run the Event Loop
 
 # nama image file temporary setiap kali processing output
@@ -130,7 +141,7 @@ while True:
             pass
     elif event == "Classification":
         # try:
-        prediction = Classification(values["ImgList"][0])
+        prediction = Classification(values["ImgList"][0], values["ImgFolder"])
         print(prediction)
         window["Prediction"].update(prediction)
     # except:

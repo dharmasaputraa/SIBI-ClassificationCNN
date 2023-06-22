@@ -77,11 +77,6 @@ def CNN():
 SibiKlasifikasi = CNN()
 SibiKlasifikasi.load_weights("model\model_sign_e75.h5")
 
-dataset_path = (
-    "C:/Users/putud/Desktop/Kuliah/Semester 4/Kecerdasan Buatan/UAS/2/app/database"
-)
-data_test = os.listdir(dataset_path)
-
 
 def getLabel(label, model_label):
     for i, x in enumerate(model_label):
@@ -91,7 +86,9 @@ def getLabel(label, model_label):
     return "Gambar bukan abjad SIBI"
 
 
-def Classification(img_input):
+def Classification(img_input, path):
+    dataset_path = path
+    data_test = os.listdir(dataset_path)
     hasil = data_test
     for x in range(len(hasil)):
         if hasil[x] == img_input:
@@ -104,4 +101,4 @@ def Classification(img_input):
             hasil.append(label)
             return hasil[x][0]
 
-    return "ga ada yang cocok bang"
+    return "-"
